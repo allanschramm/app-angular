@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Pessoa } from 'src/app/classes/pessoa';
+import { PessoaService } from 'src/app/services/pessoa.service';
 
 @Component({
   selector: 'app-conteudo',
@@ -8,9 +9,12 @@ import { Pessoa } from 'src/app/classes/pessoa';
 })
 export class ConteudoComponent implements OnInit{
   
+  constructor(private pessoaService: PessoaService) { }
+
   ngOnInit(): void {
     this.gerarNumero();
-    this.listarPessoas();
+    //this.pessoas = this.pessoaService.listarPessoas();
+    this.listar();
   }
 
   // exemplo 01 - Binding Unidirecional (Property Binding: classe -> view)
@@ -25,19 +29,21 @@ export class ConteudoComponent implements OnInit{
   // exemplo 02 - produzindo uma lista de pessoas
   pessoas: Pessoa[] = [];
 
-  listarPessoas() : void {
-    this.pessoas = [
-      { nome: 'Pedro', idade: 32 },
-      { nome: 'Ana Paula', idade: 25 },
-      { nome: 'Daniela', idade: 33 },
-      { nome: 'Maria', idade: 40 },
-      { nome: 'Osvaldo', idade: 45 }
-    ];
+  listar() : void {
+    this.pessoas = this.pessoaService.listarPessoas();
   }
 
   nomePessoa!: string;
+
   mostrar(nome: string) : void {
     this.nomePessoa = nome;
+  }
+
+  // exemplo 03
+  filtrar(input: string) : void {
+    this.listar();
+    this.pessoas = this.pessoas.filter(p => 
+      p.nome.toLowerCase().includes(input.toLowerCase()));
   }
 
 }
