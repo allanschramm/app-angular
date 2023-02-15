@@ -1,0 +1,16 @@
+<h3>Exemplo 03 - Diretiva ngFor + filtros</h3>
+<input type="text" #conteudo (keyup)="0">
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Idade</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of pessoas | sublista: conteudo.value">
+            <td>{{p.nome | uppercase | namesize}}</td>
+            <td>{{p.idade | fortyplus}}</td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,7 @@
+<h3>Exemplo 01 - Binding Unidirecional</h3>
+<span>Número Aleatório</span><br>
+<span>{{rnd}}</span><br>
+<input type="text" [value]="rnd" />
+<div class="mt-3">
+    <button (click)="gerarNumero()" class="btn btn-primary">Alterar Número</button>
+</div>

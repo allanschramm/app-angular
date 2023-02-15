@@ -1,45 +1,10 @@
 <div class="row">
     <div class="col-6">
-        <h3>Exemplo 01 - Binding Unidirecional</h3>
-        <span>Número Aleatório</span><br>
-        <span>{{rnd}}</span><br>
-        <input type="text" [value]="rnd" />
-        <div class="mt-3">
-            <button (click)="gerarNumero()" class="btn btn-primary">Alterar Número</button>
-        </div>
-
+        <app-exemplo01></app-exemplo01>
         <hr/>
-
-        <h3>Exemplo 03 - Diretiva ngFor + filtros</h3>
-        <input type="text" #conteudo (keyup)="filtrar(conteudo.value)">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Idade</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let p of pessoas">
-                    <td>{{p.nome | uppercase}}</td>
-                    <td>{{p.idade}}</td>
-                </tr>
-            </tbody>
-        </table>
+        <app-exemplo03></app-exemplo03>
     </div>
-
     <div class="col-6">
-        <h3>Exemplo 02 - Diretivas ngFor e ngIf</h3>
-
-        <div class="mb-3">
-            <select #lista class="form-select" (change)="mostrar(lista.value)">
-                <option value="">SELECIONE</option>
-                <option *ngFor="let p of pessoas" [value]="p.nome">{{p.nome}} - {{p.idade}}</option>
-            </select>
-        </div>
-
-        <div class="mb-3">
-            <div *ngIf="nomePessoa" class="alert alert-primary">Nome pessoa: {{nomePessoa}}</div>
-        </div>
+        <app-exemplo02></app-exemplo02>
     </div>
 </div>
